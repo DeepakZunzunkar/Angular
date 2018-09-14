@@ -1,0 +1,467 @@
+install Node.js and npm
+1.Node version 4.6.x or greater
+2.npm 3.x.x or greater
+
+https://angular.io/guide/quickstart
+npm install -g @angular/cli
+ng new my-app
+cd my-app
+ng serve --open
+
+The import statement is used to import functionality from the existing modules.
+Each application consists of Components. 
+Each component is a logical boundary of functionality for the application.
+You need to have layered services, which are used to share the functionality across components.
+
+
+A component consists of −
+
+Class − This is like a C++ or Java class which consists of properties and methods.
+
+Metadata − This is used to decorate the class and extend the functionality of the class.
+
+Template − This is used to define the HTML view which is displayed in the application.
+
+app.component.ts --->it is main component
+app.module.ts ------> it is main module and all component are attach to main module 
+
+
+*******************
+
+angular2 is component based approch 
+component are the individual and free peice of logic and view
+everything in angular2 is component based 
+
+typescrip :- here we code in typescript and typescript is toatlly object oriented programming  it is class base
+
+Component :- it is individual piece of module,
+			 which can contain specific view and method of app.
+			 
+	1.Template :- html viw of the component, can contain data-binding and directive 			 
+					ex: login component when we access login component we will see login form 
+	2.class :- clasess can contain the method and properties of the components
+				after click on login which functionality  running  
+
+	3.decorator/metadata :-it provide additional informative data about component to the angular app
+				like it tells which selector,which template many things like that
+				
+				
+AppModule :- it is root module which boostrap and launches the angular application 
+
+BOTH interpolation and property binding flows a data value in one direction 
+i.e from component class property to an html element property 
+
+interpollation vc  propertybinding
+------------------------------------
+interpolation is a special syntex that angular converts into property binding 
+to concatinate string we must use interpolation instead of property binding 
+to set an element property to a non-string data-value ,you must use property binding 
+
+angular databinding is all about binding to DOM object properties not a html element attribute 
+interpolation bind component class property to DOM property not to attribute of html element ex:-collspan attribute does not have corresponding property in the DOM 
+
+#interpolation and property binding deal with binding component class properties to html element properties and not atribute
+
+following thses binding flow data in one direction i.e from a component class property to an html element property 
+1.interpolation 
+2.property Binding
+3.Attribute Binding 
+4.class binding
+5.style binding 
+
+#eventBinding :-flow data in opposite  direction i.e from an html element property to a component class property
+
+for property binding we are using pair of square bracket 
+for Event binding we are using pair of parenthesis
+ 
+angular databinding is combination of property binding and event binding 
+to save several keystroke and simplify angular two way databinding ,angular has provided ngModel directive 
+to use ngModule we should import FormsModule in root module i.e app.module
+
+employee : any[]{
+}
+here 'any' is type of array which allow any type of object to be added to this array  and it is not good practice  
+
+ 				
+ngFor dirctive is typically use to iterate over list of items 
+ngFor : if it is small list we dont have performance issue but if it large list we face performance issue so use ngtrackBy
+
+using trackBy may improve the performs of appliocation 
+
+pipes : transform data before display 
+built in pipe provided by angular :-lowercase,uppercase,decimal,date,currency 
+
+#to pass properties from parent component  to the child component
+we will have to convert child component properties into input properties for so we have to decorate this properties to input decorator/metadata
+
+
+
+A service in angular is generally used when you need to reuse data or logic accross multiple component
+in angular service is nothing but class
+constructer is not right place to call service 
+service call usually issued over a http to remote web server 
+what is right place of serviec call ?
+:- ngOnInit life cycle hook is the best place of service call 
+	ngOnInit is executed after the constructer and it is used for component instialisation and making service call
+	
+Diff Class constructer and NgOnInit
+:-
+
+
+proverder property of component Decorator  to register our EmployeeService with angular Dependancy injection system
+
+call server side web api services using angular http built in serivice 
+http service presentin different angualr module 
+ step1: within the root module (AppModule), import angular HTTP module 
+        with this change we can now able use angular bilt in http services
+		
+step 2: modify EmployeeService to issue  a GET request using the built in http services		
+		
+
+what is observable ?
+:-an observale is asynchronous pattern 
+  in this pattern we have observable and observerer
+ observable :- emmits data item on notification over a periiod of time 
+ observerer(subscriber)	:- can subscribe to  observable 
+						  when subscribing to observable specify the callback function 
+						  that callback functio of observerer is notified whenever this observable emimit data item 
+						  within that function we will write the code to handle the data item emmited by the observable
+						  
+	observable can have multiple observerer(subscriber)
+ 
+ 
+step 3: From EmployeeListComponent ,subscribe to the observable returned by angular EmployeeServices
+				
+				
+to install bostrap library into node use fallowing commond
+1.run node.js commond propmt as run as administrator
+2.opon upto project directory through common propmt
+3.then type commond :- npm install bootstrap@3 jquery --save 
+
+
+to use AngularMultiSelectModule add dependancy to root module
+open project dir in cmd and type commond : npm install angular2-multiselect-dropdown
+and import in root module 
+ -->import { AngularMultiSelectModule } from 'angular2-multiselect-dropdown/angular2-multiselect-dropdown';
+ 
+ 
+Two way s to create forms in agular
+1.Templete Driven form 
+2.Model driven Forms(commonly called reactive forms)
+
+
+
+every form is combination of one or more FormControl
+
+component input property are typically used to passed data from parent component 
+to child component and import the Import Decorator from core
+ex: 
+child-compo:- @Input() emp: EmployeeListComponent or employee   
+parent-compo:-
+	html-->
+			 <div *ngFor="let employee of employees">
+				<child-compo [emp]="employee" > </child-compo> 
+			  <div>
+			  
+-----======*******-========-------			  
+to pass data from child component to parent component we use Output property 
+
+child-compo:- @Output() notify: EventEmitter<string> =new EventEmitter<string>();
+			handleClick()
+			{
+				this.notify.emmit(this.employee.name);
+			}
+
+parent compo :- 			
+html-->
+			<h1 *ngIf="dataFromChild">
+				{{dataFromChild?.name +''+dataFromChild?.gender }}
+			<h1>	
+			 <div *ngFor="let employee of employees">
+				<child-compo [emp]="employee" (notify)="handleNotify($event)" > </child-compo> 
+			  <div>
+at controller :-recieves the emploee name in 
+				handleNotify(eventData: string )
+				{
+				 this.dataFromChild=eventData;		
+				}
+
+why  are we setting the type of our output property to an EventEmmiter object 
+thats because a  child component usess an event to pass data to an parent component 								
+what data we want to pass and when we do we want to pass that data  				
+when their is click event on the employee Panel
+EventEmmiter object help us to emmit a custom event 
+eventData is comonly called as even payload
+in the view templete of  parent component we need to bind this custom notify event 
+when the child component raised this event it also going to pass employee name as event data
+and $event object is going to recevice that event payload 
+? safe navigation operator 
+
+
+				
+ how to call child component properties and methods from parent component using templete refference variable?
+-->one way to do this by using Output Property 
+  another way to this by using templete refference variable
+  
+  in the view templete of parent component 
+  create templete refference variable tha point to our child  component
+  which is used to call any of the child component public property and methods 
+  
+
+href :-   
+	 <base href="/" > this means all our navigation url now will be relative
+	 to the root of the application
+	 since we set base as this all the other url now relative to roo of application
+	 
+create component 
+:
+ng g c employees\displayEmployee --flat --no-spec
+
+
+onChanges method is call every time when input property of this comonent is changes 
+and changes to the input property are pass into this method as a parameter and parameter has type 
+and that type is SimpleChanges  and that available in angular core 
+
+
+
+
+creating and reading queryString paramter is some what similar to creating reading optional route paramter
+querystring paramter in the url start with the ?
+and if multiple querystring paramterseprated with &
+
+query paramter are usually used when you want the paramter on the route to be optional 
+and when u want to retain those paramter acrose multiple routes 
+
+just like optional route paramter ,query paramter are not part of route configuration 
+and therfore they are not used in route pattern matching. 
+
+
+
+Templete Driven form 
+-----------------------
+create templeteReference variable which will reffer to our form using ngForm Directive 
+(ngForm dirctive is present in or provided  FormsModule so import Forsmodule in root module)
+this ngForm directive suppliments this form element with additional feutures and properties like 
+dirty ,touch,valid , value etc
+
+template refference variable meaning it hold the reference to the entire form 
+ngForm directive is attach to form element whenever angular see the form tag
+behind the scen angular automatically create automatically form for us 
+
+
+reactive form is represented by a model
+this model is responcible for handling all the user interaction  with the form 
+two clsess are used to create the MDF
+1.FormControl
+2.FormGroup
+
+#in mdf ,a form is represented by model ,model is responcible for handling all the user interaction with the forms
+if form contain more than 20 filed then form looks messyand for this reason we have formBuilder class
+formBuilder class is used to build forms and it is just syntactically improvement in creating the model driven form
+
+a template driven form, which is hard to scale, and maintain.
+
+Version 3.0.0 is not stable. Go for latest stable version 2.0.5
+npm install ngx-bootstrap@2.0.5 --save
+
+
+There is an important difference between them and that is:
+Reactive forms are synchronous while Template-driven forms are asynchronous.
+
+
+
+
+
+
+Routing And Navigation
+-======================---
+
+Using angular router we can navigate from one view to next while performing our task.
+Every component can be mapped with a URL and when that URL is accessed by browser or 
+by a link on the page then the corresponding component is displayed.
+We can pass optional parameter with the URL that will be fetched in component to filter data to display.
+In our HTML template we can bind router to a link and when link is clicked,it will navigate to appropriate view.
+We can configure a URL to redirect to next URL.We can also handle "404 Not Found" in angular routing. 
+Angular routing provides location service using which we can go back and forward through the history of pages using a button.
+Here on this page first we will discuss the angular routing API and then we will create a book library for routing and navigation demo
+
+To work with angular routing and navigation, first we need to understand their API.
+Angular routing provides services, directives and operators that manage the routing and navigation in our application.
+Here we will provide API description and their usability in our routing application  
+ 
+1. RouterModule and Routes
+:-RouterModule is a separate module in angular that provides required services and directives 
+to use routing and navigation in angular application. 
+Routes defines and array of roots that map a path to a component. 
+Paths are configured in module to make available it globally.
+To use RouterModule and Routes in module, find the steps.  
+1.First of all we will import RouterModule and Routes in our component.
+2.Create array of Routes in which we map a URL with a component.
+a. Mapping a Route to a Component
+:-{ path: 'manage-book', component: ManageBookComponent } 
+b. Configure Parameters 
+:-{ path: 'update-book/:id', component: UpdateBookComponent } 
+c. Redirect to a URL
+	:-{ path: '', redirectTo: '/manage-book ', pathMatch: 'full' } 
+		If we access a URL without specifying any component path such as "/" then it will be redirected to URL /manage-book path and hence by default ManageBookComponent will be displayed. 
+d. Handling "Page Not Found" 
+	:-{ path: '**', component: PageNotFoundComponent } 
+		If we access path that has no mapping with any component, then to handle 404 Not Found error, we use a path (**) that is mapped with any component to show desired message.
+
+
+3. Using RouterModule.forRoot() 
+	:- Now we need to import RouterModule.forRoot(routes) using imports metadata of @NgModule.
+	Here argument routes is our constant that we have defined above as array of Routes to map path with component.
+
+
+angular route parameter
+------------------------
+:- 
+this.router.navigate(['/employees',employeeId]);
+or
+<a [routerLink]="['/employees',2]">getwiTH iD2 </a>
+
+reading parameter value  : this.route.snapshot.params['id'] it return value as string convert it into number by + symbal
+		const Id=+this.route.snapshot.params['id']
+the above way are used in angualr 2 now it is depricatd in angular 4 and above version we use 
+ex:-	const Id=+this.route.snapshot.paramMap.get('id');
+ observable aproch
+ 
+ this.route.paramMap.subscribe(params =>{
+	const Id=+params.get('id');
+	
+ })
+ 
+optional route parameter
+-------------------------
+<a class="btn btn-primary" [routerLink]="['list',{ id : employee.id , name : employee.name }]" >Back To List </a>
+ this.selectedId=+this.route.snapshot.paramMap.get('id');
+ 
+ 
+Query string route parameter
+------------------------------ 
+passing query string paramtere in code 
+:- this.router.navigate(['/employees',employeeId],
+     { querParams  : { 'searchTerm ' : this.searchTerm },{ 'testParam ' : 'testValue ' } 
+   );
+
+passing query string paramtere in the HTML
+:- <a [routerLink]= "['/employees']"
+	  [ queryParams ]= "{ ' searchTerm' : : 'john' , 'testParam': 'testValue' }">List 
+   </a>
+   
+preserve query string parameter in code 
+:- this.router.navigate(['/employees',employeeId],
+     {
+		querParamsHandling  : 'preserve'
+	 }
+   );    
+	  
+preserve query string paramtere in the HTML
+:- <a [routerLink]= "['/list']"
+	  queryParamsHandling="preserve">Back To List
+   </a>
+queryParamsHandling is introduce in angular 4 
+if u r using angular 2 ,use preserveQueryParams
+preserveQueryParams is depricated since angualr 4
+
+
+code will execute for every time whenever username control changes. 
+#for valueChanges with FormControl
+	this.userForm.get('forControlName').valueChanges.subscribe(
+	  uname => {
+		console.log('Username changed:' + uname);
+	  }
+	); 
+
+	If we create a getter property for our control as following
+	get forControlName() {
+	 return this.userForm.get('forControlName');
+	} 
+	Then we can call valueChanges as given below.
+	this.forControlName.valueChanges.subscribe(
+	  uname => {
+		console.log('Username changed:' + uname);
+	  }
+	);
+
+	
+#for valueChanges with FormArray
+	this.userForm.get('FormArrayName').valueChanges.subscribe(
+	  data => {
+		console.log('favoriteLocations: ' + data);
+	  }
+	); 	
+	we create a getter property for our control as following
+	get FormArrayName() {
+	   return this.userForm.get('FormArrayName');
+	} 
+	Then we can call valueChanges as given below.
+	this.FormArrayName.valueChanges.subscribe(
+	  data => {
+		console.log('favoriteLocations: ' + data);
+	  }
+	); 
+	  
+
+#for valueChanges with FormGroup		
+
+this.userForm.valueChanges.subscribe((user: User) => {
+	console.log('username: '+ user.username);
+	console.log('Password: '+ user.password);
+}); 
+
+
+https://app.pluralsight.com/player?course=angular-2-getting-started-update&author=deborah-kurata&name=angular-2-getting-started-update-m1&clip=0
+
+karishmakale19@outlook.com
+neerajangular
+
+CMS
+newly created angular proj size  : 241 MB (253,387,602 bytes) 28,893 Files, 3,685 Folders
+after adding faium css, proj size : 278 MB (292,079,696 bytes) 33,027 Files, 4,016 Folders
+
+
+ngx ui framework of angular
+:-
+step 1. npm install ngx-bootstrap --save dont use npm install ngx-bootstrap@ --save
+
+after adding : proj size : 286 MB (300,488,704 bytes) 34,179 Files, 4,063 Folders
+
+optional to add : npm install bootstrap@3 --save
+BsDatepickerModule is from ngx-bootstrap
+"../node_modules/ngx-bootstrap/datepicker/bs-datepicker.css",
+are added in angular.json or angular0cli.json file in styles array
+
+npm install bootstrap@3 jquery --save 
+after adding : proj size : 289 MB (304,051,771 bytes) 34,440 Files, 4,103 Folders
+
+npm install --save ag-grid-community ag-grid-angular
+after adding : proj size : 302 MB (317,163,779 bytes) 35,800 Files, 4,220 Folders
+import { AgGridModule } from 'ag-grid-angular';
+imports: [BrowserModule, AgGridModule.withComponents([])],
+@import "~ag-grid-community/dist/styles/ag-grid.css";
+@import "~ag-grid-community/dist/styles/ag-theme-balham.css";
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
