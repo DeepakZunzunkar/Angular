@@ -56,7 +56,11 @@ typescript                   3.2.4
 
 ```
 
-ng g c spec --false
+- to create a component
+> ng g c spec myContainer --spec false
+
+- to create component inside a folder
+> ng g c my-container/topNav --spec false
 
 
 
