@@ -74,7 +74,10 @@ typescript                   3.2.4
    - stylesheet file i.e css file. 
 
 
-
+##### Data Binding 
+- angular databinding is combination of property binding and event binding
+- binding component class property to its corresponding view template i.e DOM object properties	or HTML element properties
+or binding  view template to its corresponding component class property.
 
 
 
