@@ -64,7 +64,14 @@ typescript                   3.2.4
 
 
 
-
+#### Component 
+- it is individual piece of module or  component are the individual and free peice of logic and view
+- Each component is a logical boundary of functionality for the application.
+  which can contain specific view and method .
+- A component consists of
+   - Html template i.e html file
+   - Typescript file
+   - stylesheet file i.e css file. 
 
 
 
