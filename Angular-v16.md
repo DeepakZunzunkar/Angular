@@ -85,12 +85,36 @@ Package                      Version
       - here we bind view data i.e html attribute is with component data .
       - when user has interaction on html like click on button then that efect should refleft in component file.
         means compnenet data get change .
+      - event-binding means perform action on some events.
+      - angular has reserved variable i.e `$event`.
+      - $event is used  to get the information of that event which we are triggering means info like event property .
+      
+        
+         
         
 ##### TWO WAY DATA_BINDING
 - here data is bind in both direction i.e from component to view and view to component on same time.
 > [(ngModel)]="data"
-- 
 
+
+### installing bootstrap
+1. Normal Botstrap
+2. NGX-Bootstrap
+
+#### Normal Bootstrap
+- open terminal and type : `npm install --save bootstrap`.
+- in angular.json file, add css reference in styles array and js reference in script array
+  and restart project if bootstrap not loaded.
+  
+
+#### NGX-Bootstrap
+- it is built using angular native directive without using Jquery.
+- it is fully compatible with angular.
+- the component which we want to use , only that component we can add
+  so that app will be light-weight and the unnessary component which we don't use will be not there .
+- `npm install ngx-bootstrap --save `  
+- import that module in app.module and use it's template code in component.   
+   
 
 
 
