@@ -80,8 +80,12 @@ Package                      Version
       - when we have to bind component file data with the html file attribute. 
    - ###### Event Binding `(event)="expression"`   
       - here we bind view data i.e html attribute is with component data .
-
-
+      - when user has interaction on html like click on button then that efect should refleft in component file
+        means compnenet data get change .
+        
+##### TWO WAY DATA_BINDING
+- here data is bind in both direction i.e from component to view and view to component on same time.
+> [(ngModel)]="data"
 
 
 
