@@ -60,5 +60,13 @@ Package                      Version
 - component helps us to bind view and models.
 - component contain most of the binding code.
 
-
-
+#### Data Binding 
+- it is comminucation between component(type script file) and view(html file).
+- Typescript file is superset of javascript where we write logics in method and do calculation
+  that result we are showing it to user throught template file i.e html view .
+  for that we need communication to fetch typescript file result to html template to display result
+  and this role is fullfill by by data-binding.
+  
+- data-binding is two way process , it can both send and recieve data means 
+  when we change something in view then model update automaticaly .
+ 
