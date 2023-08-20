@@ -75,17 +75,21 @@ Package                      Version
    - ###### String Interpolation `{{ data }}`
       - here we use component class property in double curly bracess on view file.
       - when we have to bind component file data with the html file attribute.
+      - `we can use only string in interpolation and also we can do string concationation.`
    - ###### Property Binding `[property]='data'`
-      - here we used square bracket around html attribute.
+      - here we used square bracket around html attribute i.e bind dynamic peroperty to html Attribute.
+      - property binding is used with attribute only.
+      - `we can use string as well as non-string in property binding but we can not do string concatination.`
       - when we have to bind component file data with the html file attribute. 
    - ###### Event Binding `(event)="expression"`   
       - here we bind view data i.e html attribute is with component data .
-      - when user has interaction on html like click on button then that efect should refleft in component file
+      - when user has interaction on html like click on button then that efect should refleft in component file.
         means compnenet data get change .
         
 ##### TWO WAY DATA_BINDING
 - here data is bind in both direction i.e from component to view and view to component on same time.
 > [(ngModel)]="data"
+- 
 
 
 
