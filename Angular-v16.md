@@ -69,4 +69,20 @@ Package                      Version
   
 - data-binding is two way process , it can both send and recieve data means 
   when we change something in view then model update automaticaly .
- 
+
+##### ONE WAY DATA_BINDING
+ - when we want to bind data from component file to  view file and vice versa then we use one way data binding.
+   - ###### String Interpolation `{{ data }}`
+      - here we use component class property in double curly bracess on view file.
+      - when we have to bind component file data with the html file attribute.
+   - ###### Property Binding `[property]='data'`
+      - here we used square bracket around html attribute.
+      - when we have to bind component file data with the html file attribute. 
+   - ###### Event Binding `(event)="expression"`   
+      - here we bind view data i.e html attribute is with component data .
+
+
+
+
+
+
