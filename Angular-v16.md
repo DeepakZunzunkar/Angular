@@ -115,6 +115,18 @@ Package                      Version
 - `npm install ngx-bootstrap --save `  
 - import that module in app.module and use it's template code in component.   
    
-
-
+#### Ng-Directive
+- directive is nothing but the angular instruction which help to change the DOM behaviour and appreance.
+- component itself is directive , whenever we are using selecter of any component in the template , at this point
+  here angular instructing to place componenet content in place of this selecter.
+- Three Types of Directive
+   1. Component Directive
+       - Directive with own component. 
+   3. Structural Directive
+       - manipulating the dom elements.
+       - means it removes and add, dom element on condition based.
+       - ex: ngIf , ngFor , ngSwitch
+   5. Attribute Directive  
+       - it helps to changes the dom looks and behaviour.
+       - ex: ngStyle , ngClass 
 
