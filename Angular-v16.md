@@ -140,6 +140,12 @@ Package                      Version
   user seem that, the new page get loaded but behind the sceen javascript change the page content . 
 
 
-
+#### component communication 
+- one way is nesting of component means one component selecter used inside another component view.
+##### parent-to-child
+ - here we used @input decorator in child component.
+ - in child component we have to used normal property binding and then after we need to expose that property
+   out of the componenet to access and we have to make it as bindable .
+ -   
 
 
