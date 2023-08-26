@@ -130,3 +130,16 @@ Package                      Version
        - it helps to changes the dom looks and behaviour.
        - ex: ngStyle , ngClass 
 
+#### Routing 
+- routing simply meaning is navigation amongs pages .
+- different diferent url for different different page we called them as route.
+- Angular is single page application so we use directive to change the some portion of the page
+  and finally we ar always on same page  and base URL remains same.
+- to display different different pages like home , about , contacts... for this we use angular routes
+  using which we change the particular page section and with section change we also change the URL .
+  user seem that, the new page get loaded but behind the sceen javascript change the page content . 
+
+
+
+
+
