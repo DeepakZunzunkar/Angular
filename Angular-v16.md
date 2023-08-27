@@ -143,9 +143,21 @@ Package                      Version
 #### component communication 
 - one way is nesting of component means one component selecter used inside another component view.
 ##### parent-to-child
- - here we used @input decorator in child component.
+ - here we used @input decorator in child component to make custome input property.
  - in child component we have to used normal property binding and then after we need to expose that property
    out of the componenet to access and we have to make it as bindable .
- -   
+ - once we put @input() decorator on any property on child component then that property will now avaliable to access
+   out this component , it behave like custome property   
+ - we can bind outside componenet data with this custome input property.
+
+##### child-to-parent
+- when we used @output decorator on any property in child component then that proprty become
+  custome event in child component.
+- to send data from child component to parent component for that we need to create event
+  and our property data will be emmited when event is trigger in child compoent which we called them as custome event binding.
+- on parent component when we used child selecter there we can used @output decorator property as event and bind that event to parent 
+  component functions or method.and $event will be used to capture data from parent to child.
 
 
+
+   
