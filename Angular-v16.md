@@ -158,6 +158,16 @@ Package                      Version
 - on parent component when we used child selecter there we can used @output decorator property as event and bind that event to parent 
   component functions or method.and $event will be used to capture data from parent to child.
 
-
-
+#### Services
+- service is nothing but reusable typescript class.
+- in service we can store comman data of any type  like  propert , methods ,
+  arrays , object , list ..  which is required by other component  as well to used it .
+- we can create service class and create that service class object anywhere where we want to use
+  but this is not a proper way , angular provide much better way to use service i.e dependency injection.
+- if multiple component depend upon common logic or data or they require this then we can create service and then 
+  inject that service to that required component. and we have to register that service in app also i.e in app.module
+  there we have providers array we need to put that service there .      
+- in componenet where we used service there we we have to create instance of that service but not by using new keyword
+  we will fallow angular convention to create the service, in constructor we will declare that service which will inject
+  that service to that component means create instance .
    
